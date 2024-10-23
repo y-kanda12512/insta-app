@@ -25,6 +25,19 @@ gem 'annotate'
 gem 'better_errors'
 gem 'hamlit-rails'
 
+# ユーザーログイン
+gem 'devise'
+
+# scss読み込み
+gem 'sassc'
+
+# javascript読み込み
+gem 'rails-ujs'
+
+# deviseの日本語化
+gem 'rails-i18n'
+gem 'devise-i18n-views'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
