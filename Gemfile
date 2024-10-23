@@ -38,6 +38,9 @@ gem 'rails-ujs'
 gem 'rails-i18n'
 gem 'devise-i18n-views'
 
+# モデルにアノテーションを作る
+gem "annotate"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
