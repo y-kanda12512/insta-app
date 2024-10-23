@@ -1,0 +1,19 @@
+.login-top-img
+  = image_tag 'login-top',alt: 'Login Top'
+
+.inner
+  = form_for(resource, as: resource_name, url: session_path(resource_name),html: { class:'form' }) do |f|
+    .form__fields
+      .field
+        = f.label :email,class:'form__label'
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email",class:'form__input'
+      .field
+        = f.label :password,class:'form__label'
+        %br/
+        = f.password_field :password, autocomplete: "current-password",class:'form__input'
+
+    = render "devise/shared/links"
+
+    .actions
+      = f.submit "Log in",class:'form__submit'
