@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   # rsoot "posts#index"
   root "home#index"
 
+  resource :profile,only:[:show]
+
   # deviseによる追加設定
 end
