@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -115,6 +116,65 @@ body {
   padding-bottom: 68px;
 }
 
+.flash {
+  padding: 10px;
+  position: fixed;
+  top: 15px;
+  right: 0;
+  background: #fff;
+  -webkit-animation: flash-slide 3s forwards;
+          animation: flash-slide 3s forwards;
+  border: 1px solid #000;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  opacity: 0;
+}
+
+@-webkit-keyframes flash-slide {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); /* 画面外の右 */
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: translateX(-5%);
+            transform: translateX(-5%); /* 画面内にスライドイン */
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: translateX(-5%);
+            transform: translateX(-5%); /* 表示されたままキープ */
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); /* 画面外に戻る */
+    opacity: 0;
+  }
+}
+
+@keyframes flash-slide {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); /* 画面外の右 */
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: translateX(-5%);
+            transform: translateX(-5%); /* 画面内にスライドイン */
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: translateX(-5%);
+            transform: translateX(-5%); /* 表示されたままキープ */
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); /* 画面外に戻る */
+    opacity: 0;
+  }
+}
 .login-top-img {
   margin-bottom: 33px;
 }
@@ -176,9 +236,16 @@ body {
 }
 
 .profile__image {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline: auto;
   margin-top: 32px;
   text-align: center;
   position: relative;
+}
+.profile__image:hover {
+  cursor: pointer;
 }
 .profile__image::before {
   content: "";
@@ -191,8 +258,10 @@ body {
   -webkit-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
   border: 1px solid #e91e63;
+  z-index: -1;
 }
 .profile__image img {
+  border-radius: 50%;
   width: 76.875px;
   height: 76.875px;
 }
