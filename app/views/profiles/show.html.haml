@@ -4,9 +4,9 @@
             %span.profile__head-name
                 = @account_name
         %div.profile__image
-            = image_tag @profile.profile_image.attached? ? url_for(@profile.profile_image) : 'default-profile.png', id: 'profileImage'
-            = form_with model: @profile, url: profile_path(@profile), method: :patch, local: true, html: { multipart: true, id: 'imageUploadForm' } do |f|
-                = f.file_field :profile_image, accept: 'image/*', id: 'imageUploadInput', style: 'display:none;'
+            = image_tag current_user.profile_image, id: 'profileImage'
+            = form_with model: @profile, method: :patch, local: true, html: { multipart: true, id: 'imageUploadForm' } do |f|
+                = f.file_field :profile_image, accept: 'image/*', id: 'imageUploadInput',data: { turbo: false }, style: 'display:none;'
         %div.profile__body
             %div.profile__counts
                 %div.count

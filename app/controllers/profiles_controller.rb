@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_profile
+    before_action :set_profile,only:[:show,:update]
 
     def show
         @account_name = current_user.account_name
@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
     def update
         if @profile.update(profile_params)
-            redirect_to @profile,notice: 'プロフィールを更新しました'
+            redirect_to profile_path,notice: 'プロフィールを更新しました'
         else
             render :show
         end

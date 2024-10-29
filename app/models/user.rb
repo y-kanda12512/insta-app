@@ -26,4 +26,12 @@ class User < ApplicationRecord
   validates :account_name,presence: true ,uniqueness: true
 
   has_one :profile,dependent: :destroy
+
+  def profile_image
+    if profile&.profile_image&.attached?
+      profile.profile_image
+    else
+      'default-profile.png'
+    end
+  end
 end
