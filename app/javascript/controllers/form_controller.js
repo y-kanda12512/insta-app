@@ -1,8 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("turbo:load", function () {
   // 選択されたファイルの名前を出力する
   const fileInput = document.getElementById("post_post_image");
+
+  if (!fileInput) {
+    return;
+  }
+
   const fileList = document.getElementById("file-list");
 
   fileInput.addEventListener("change", function () {
