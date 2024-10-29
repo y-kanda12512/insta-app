@@ -1,1 +1,29 @@
-post
+.posts.page-content
+    .inner
+        .posts__head
+            = link_to new_post_path,class:'posts__new-link' do
+                = image_tag 'photo-camera.png', alt:'カメラの画像'
+        .posts__body
+            .post
+                .post__head
+                    .post__profile-image
+                        = image_tag 'post-profile.png'
+                    .post__account-info
+                        %span.post__account-name Jmax_21
+                        %span.post__account-time 3 hours ago
+                .post__body
+                    .post__images
+                        = image_tag 'post-image-1.png',class:'post__image'
+                        = image_tag 'post-image-2.png',class:'post__image'
+                        = image_tag 'post-image-3.png',class:'post__image'
+                    .post__content
+                        .post__tabs
+                            .post__heart.post__tab
+                                = image_tag 'inactive-heart.png'
+                            = link_to '#',class:'post__tab' do
+                                = image_tag 'comment-image.png'
+                            = link_to '#',class:'post__tab' do
+                                = image_tag 'share-image.png'
+                        .post__info
+                            .post__description Jasmine and 12,000 other liked your post
+                            .post__date Jmax_21  Summer holiday :3
