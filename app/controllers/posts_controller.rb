@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
     def create
         @post = current_user.posts.build(post_params)
+        puts post_params.inspect
 
         if @post.save
             redirect_to posts_path,notice: '記事が正常に投稿されました'
@@ -19,6 +20,6 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:content,:post_image)
+        params.require(:post).permit(:content,post_images: [])
     end
 end

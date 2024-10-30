@@ -113,6 +113,11 @@ body {
   padding-bottom: 68px;
 }
 
+.main-content {
+  max-width: 375px;
+  margin-inline: auto;
+}
+
 .flash {
   padding: 10px;
   position: fixed;
@@ -357,6 +362,14 @@ body {
 }
 
 .posts__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 36px;
   margin-top: 42px;
 }
 
@@ -408,7 +421,7 @@ body {
 .post__image:nth-child(1) {
   grid-area: 1/1/3/2;
 }
-.post__image:nth-child(12) {
+.post__image:nth-child(2) {
   grid-area: 1/2/2/3;
 }
 .post__image:nth-child(3) {

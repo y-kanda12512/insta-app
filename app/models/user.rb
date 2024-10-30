@@ -23,6 +23,9 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+
+require 'time'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -39,5 +42,12 @@ class User < ApplicationRecord
     else
       'default-profile.png'
     end
+  end
+
+  def last_login_hour(last_login_time)
+    current_time = Time.now
+    time_difference = ( current_time - last_login_time ) / 3600
+    time_difference_i = time_difference.to_i
+    "#{time_difference_i} hours ago"
   end
 end
