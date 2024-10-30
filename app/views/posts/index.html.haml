@@ -6,15 +6,16 @@
         .posts__body
             - @posts.each do |post|
                 .post
-                    .post__head
-                        .post__profile-image
-                            = image_tag post.user.profile_image
-                        .post__account-info
-                            %span.post__account-name
-                                = post.user.account_name
-                            %span.post__account-time
-                                - last_login_time = post.user.last_sign_in_at
-                                = post.user.last_login_hour(last_login_time)
+                    = link_to post_path(post) do
+                        .post__head
+                            .post__profile-image
+                                = image_tag post.user.profile_image
+                            .post__account-info
+                                %span.post__account-name
+                                    = post.user.account_name
+                                %span.post__account-time
+                                    - last_login_time = post.user.last_sign_in_at
+                                    = post.user.last_login_hour(last_login_time)
                     .post__body
                         .post__images
                             - if post.post_images.attached?
@@ -26,7 +27,7 @@
                                     = image_tag 'inactive-heart.png'
                                 = link_to '#',class:'post__tab' do
                                     = image_tag 'comment-image.png'
-                                = link_to 'http://twitter.com/share?url=insta-app.com&text=Twitterのシェアをするときの文章です',class:'post__tab' do
+                                = link_to "http://twitter.com/share?url=#{post_url(post)}&text=Twitterのシェアをするときの文章です",class:'post__tab',target:'_blank' do
                                     = image_tag 'share-image.png'
                             .post__info
                                 .post__description

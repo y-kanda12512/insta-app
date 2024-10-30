@@ -3,13 +3,16 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
+    def show
+        @post = Post.find(params[:id])
+    end
+
     def new
         @post = current_user.posts.build
     end
 
     def create
         @post = current_user.posts.build(post_params)
-        puts post_params.inspect
 
         if @post.save
             redirect_to posts_path,notice: '記事が正常に投稿されました'
