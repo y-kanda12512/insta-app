@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :account_name,presence: true ,uniqueness: true
 
   has_many :posts,dependent: :destroy
+  has_many :likes,dependent: :destroy
   has_one :profile,dependent: :destroy
 
   def profile_image
@@ -39,5 +40,11 @@ class User < ApplicationRecord
     else
       'default-profile.png'
     end
+  end
+
+  # likeテーブルにview側で表示しているpost_idが存在するか判定
+  # 存在していればtrueを返却
+  def has_liked?(post)
+    likes.exists?(post_id: post.id)
   end
 end

@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   # rsoot "posts#index"
   root "home#index"
 
-  resources :posts
+  resources :posts do
+    resource :like, only:[:create, :destroy]
+  end
 
-  resource :profile, only: [:show, :update]
+  resource :profile, only:[:show, :update]
 end

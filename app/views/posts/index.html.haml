@@ -20,11 +20,17 @@
                         .post__images
                             - if post.post_images.attached?
                                 - post.post_images.each do |post_image|
-                                    = image_tag url_for(post_image),alt: "投稿画像",class:'post__image'
+                                    = image_tag url_for(post_image), alt: "投稿画像", class:'post__image'
                         .post__content
                             .post__tabs
-                                .post__heart.post__tab
-                                    = image_tag 'inactive-heart.png'
+                                - if current_user.has_liked?(post)
+                                    .post__heart.post__tab
+                                        = link_to post_like_path(post), data: { turbo_method: :delete } do
+                                            = image_tag 'active-heart.png'
+                                - else
+                                    .post__heart.post__tab
+                                        = link_to post_like_path(post), data: { turbo_method: :post } do
+                                            = image_tag 'inactive-heart.png'
                                 = link_to '#',class:'post__tab' do
                                     = image_tag 'comment-image.png'
                                 = link_to "http://twitter.com/share?url=#{post_url(post)}&text=Twitterのシェアをするときの文章です",class:'post__tab',target:'_blank' do
