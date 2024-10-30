@@ -1,35 +1,35 @@
-%div.profile.padding-top.padding-bottom
-    %div.inner
-        %div.profile__head
+.profile.page-content
+    .inner
+        .profile__head
             %span.profile__head-name
                 = @account_name
-        %div.profile__image
-            = image_tag @profile.profile_image.attached? ? url_for(@profile.profile_image) : 'default-profile.png', id: 'profileImage'
-            = form_with model: @profile, url: profile_path(@profile), method: :patch, local: true, html: { multipart: true, id: 'imageUploadForm' } do |f|
-                = f.file_field :profile_image, accept: 'image/*', id: 'imageUploadInput', style: 'display:none;'
-        %div.profile__body
-            %div.profile__counts
-                %div.count
-                    %div.count__number 44
-                    %div.count__text Posts
-                %div.count
-                    %div.count__number 110
-                    %div.count__text Followers
-                %div.count
-                    %div.count__number 44
-                    %div.count__text Following
-            %div.profile__posts-content
-                %div.profile__posts-upper-row
-                    %div.profile__post
+        .profile__image
+            = image_tag current_user.profile_image, id: 'profileImage'
+            = form_with model: @profile, method: :patch, local: true, html: { id: 'imageUploadForm' } do |f|
+                = f.file_field :profile_image, accept: 'image/*', id: 'imageUploadInput',data: { turbo: false }, style: 'display:none;'
+        .profile__body
+            .profile__counts
+                .count
+                    .count__number 44
+                    .count__text Posts
+                .count
+                    .count__number 110
+                    .count__text Followers
+                .count
+                    .count__number 44
+                    .count__text Following
+            .profile__posts-content
+                .profile__posts-upper-row
+                    .profile__post
                         = image_tag 'post-1'
-                    %div.profile__post
+                    .profile__post
                         = image_tag 'post-2'
-                    %div.profile__post
+                    .profile__post
                         = image_tag 'post-3'
-                %div.profile__posts-lower-tier
-                    %div.profile__post
+                .profile__posts-lower-tier
+                    .profile__post
                         = image_tag 'post-4'
-                    %div.profile__post
+                    .profile__post
                         = image_tag 'post-5'
-                    %div.profile__post
+                    .profile__post
                         = image_tag 'post-6'

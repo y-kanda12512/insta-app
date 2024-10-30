@@ -1,0 +1,23 @@
+.page-content
+    .inner
+        .post
+            .post__head
+                .post__profile-image
+                    = image_tag @post.user.profile_image
+                .post__account-info
+                    %span.post__account-name
+                        = @post.user.account_name
+                    %span.post__account-time
+                        - last_login_time = @post.user.last_sign_in_at
+                        = @post.user.last_login_hour(last_login_time)
+        .post__body
+            .post__images
+                - if @post.post_images.attached?
+                    - @post.post_images.each do |post_image|
+                        = image_tag url_for(post_image),alt: "投稿画像",class:'post__image'
+            .post__content
+                .post__info
+                    .post__description
+                        = @post.content
+                    .post__date
+                        = "#{@post.user.account_name} Summer holiday :3"

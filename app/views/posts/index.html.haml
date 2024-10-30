@@ -1,0 +1,36 @@
+.posts.page-content
+    .inner
+        .posts__head
+            = link_to new_post_path,class:'posts__new-link' do
+                = image_tag 'photo-camera.png', alt:'カメラの画像'
+        .posts__body
+            - @posts.each do |post|
+                .post
+                    = link_to post_path(post) do
+                        .post__head
+                            .post__profile-image
+                                = image_tag post.user.profile_image
+                            .post__account-info
+                                %span.post__account-name
+                                    = post.user.account_name
+                                %span.post__account-time
+                                    - post_time = post.created_at
+                                    = post.posting_hour(post_time)
+                    .post__body
+                        .post__images
+                            - if post.post_images.attached?
+                                - post.post_images.each do |post_image|
+                                    = image_tag url_for(post_image),alt: "投稿画像",class:'post__image'
+                        .post__content
+                            .post__tabs
+                                .post__heart.post__tab
+                                    = image_tag 'inactive-heart.png'
+                                = link_to '#',class:'post__tab' do
+                                    = image_tag 'comment-image.png'
+                                = link_to "http://twitter.com/share?url=#{post_url(post)}&text=Twitterのシェアをするときの文章です",class:'post__tab',target:'_blank' do
+                                    = image_tag 'share-image.png'
+                            .post__info
+                                .post__description
+                                    = post.content
+                                .post__date
+                                    = "#{post.user.account_name} Summer holiday :3"
