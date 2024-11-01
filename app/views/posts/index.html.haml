@@ -24,10 +24,10 @@
                         .post__content
                             .post__tabs
                                 .post__heart.post__tab.hidden.active-heart
-                                    = link_to post_like_path(post), data: { turbo_method: :delete } do
+                                    = link_to post_like_path(post), data: { method: :delete } do
                                         = image_tag 'active-heart.png'
                                 .post__heart.post__tab.hidden.inactive-heart
-                                    = link_to post_like_path(post), data: { turbo_method: :post } do
+                                    = link_to post_like_path(post), data: { method: :post } do
                                         = image_tag 'inactive-heart.png'
                                 = link_to '#',class:'post__tab' do
                                     = image_tag 'comment-image.png'
@@ -38,3 +38,5 @@
                                     = post.content
                                 .post__date
                                     = "#{post.user.account_name} Summer holiday :3"
+
+%script{ type: "module", src: asset_path('modules/handle_heart.js') }

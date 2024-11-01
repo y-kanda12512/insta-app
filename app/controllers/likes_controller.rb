@@ -11,7 +11,6 @@ class LikesController < ApplicationController
         post = Post.find(params[:post_id])
         post.likes.create!(user_id: current_user.id)
 
-        redirect_to posts_path
         render json: { status: 'ok' }
     end
 
@@ -19,7 +18,6 @@ class LikesController < ApplicationController
         post = Post.find(params[:post_id])
         like = post.likes.find_by!(user_id: current_user.id)
         like.destroy!
-        redirect_to posts_path
 
         render json: { status: 'ok' }
     end
