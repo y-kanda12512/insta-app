@@ -5,7 +5,7 @@
                 = image_tag 'photo-camera.png', alt:'カメラの画像'
         .posts__body
             - @posts.each do |post|
-                .post
+                .post#post-show{ data: { post_id: post.id } }
                     = link_to post_path(post) do
                         .post__head
                             .post__profile-image
@@ -23,14 +23,12 @@
                                     = image_tag url_for(post_image), alt: "投稿画像", class:'post__image'
                         .post__content
                             .post__tabs
-                                - if current_user.has_liked?(post)
-                                    .post__heart.post__tab
-                                        = link_to post_like_path(post), data: { turbo_method: :delete } do
-                                            = image_tag 'active-heart.png'
-                                - else
-                                    .post__heart.post__tab
-                                        = link_to post_like_path(post), data: { turbo_method: :post } do
-                                            = image_tag 'inactive-heart.png'
+                                .post__heart.post__tab.hidden.active-heart
+                                    = link_to post_like_path(post), data: { turbo_method: :delete } do
+                                        = image_tag 'active-heart.png'
+                                .post__heart.post__tab.hidden.inactive-heart
+                                    = link_to post_like_path(post), data: { turbo_method: :post } do
+                                        = image_tag 'inactive-heart.png'
                                 = link_to '#',class:'post__tab' do
                                     = image_tag 'comment-image.png'
                                 = link_to "http://twitter.com/share?url=#{post_url(post)}&text=Twitterのシェアをするときの文章です",class:'post__tab',target:'_blank' do

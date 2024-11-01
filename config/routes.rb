@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :posts do
-    resource :like, only:[:create, :destroy]
+    resource :like, only:[:show,:create, :destroy]
   end
 
   resource :profile, only:[:show, :update]
