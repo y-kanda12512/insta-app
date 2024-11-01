@@ -3,10 +3,3 @@ import "@hotwired/turbo-rails";
 import "controllers";
 // javascript/application.js
 //= require rails-ujs
-
-import axios from "axios";
-import jquery from "jquery";
-import "./modules/handle_heart";
-window.axios = axios;
-window.jQuery = jquery;
-window.$ = jquery;
