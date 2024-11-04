@@ -104,6 +104,10 @@ body {
   font-family: "Poppins", serif;
 }
 
+.hidden {
+  display: none;
+}
+
 .inner {
   padding-inline: 16px;
 }

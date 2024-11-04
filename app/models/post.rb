@@ -17,6 +17,7 @@ require 'time'
 
 class Post < ApplicationRecord
     belongs_to :user
+    has_many :likes, dependent: :destroy
     has_many_attached :post_images
 
     def posting_hour(post_time)
