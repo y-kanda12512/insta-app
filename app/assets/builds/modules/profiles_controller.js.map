@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../javascript/modules/profiles_controller.js"],
-  "sourcesContent": ["document.addEventListener(\"DOMContentLoaded\", function () {\n\n  const profileImage = document.getElementById(\"profileImage\");\n\n  if (profileImage) {\n    profileImage.addEventListener(\"click\", function () {\n      document.getElementById(\"imageUploadInput\").click();\n    });\n\n    document.getElementById(\"imageUploadInput\").addEventListener(\"change\", function () {\n      document.getElementById(\"imageUploadForm\").submit();\n    });\n  }\n});\n"],
-  "mappings": ";AAAA,SAAS,iBAAiB,oBAAoB,WAAY;AAExD,QAAM,eAAe,SAAS,eAAe,cAAc;AAE3D,MAAI,cAAc;AAChB,iBAAa,iBAAiB,SAAS,WAAY;AACjD,eAAS,eAAe,kBAAkB,EAAE,MAAM;AAAA,IACpD,CAAC;AAED,aAAS,eAAe,kBAAkB,EAAE,iBAAiB,UAAU,WAAY;AACjF,eAAS,eAAe,iBAAiB,EAAE,OAAO;AAAA,IACpD,CAAC;AAAA,EACH;AACF,CAAC;",
+  "sourcesContent": ["document.addEventListener(\"DOMContentLoaded\", function () {\n  const profileImage = document.getElementById(\"profileImage\");\n\n  if (profileImage) {\n    profileImage.addEventListener(\"click\", function () {\n      document.getElementById(\"imageUploadInput\").click();\n    });\n\n    document.getElementById(\"imageUploadInput\").addEventListener(\"change\", function () {\n      document.getElementById(\"imageUploadForm\").submit();\n    });\n  }\n});\n"],
+  "mappings": ";AAAA,SAAS,iBAAiB,oBAAoB,WAAY;AACxD,QAAM,eAAe,SAAS,eAAe,cAAc;AAE3D,MAAI,cAAc;AAChB,iBAAa,iBAAiB,SAAS,WAAY;AACjD,eAAS,eAAe,kBAAkB,EAAE,MAAM;AAAA,IACpD,CAAC;AAED,aAAS,eAAe,kBAAkB,EAAE,iBAAiB,UAAU,WAAY;AACjF,eAAS,eAAe,iBAAiB,EAAE,OAAO;AAAA,IACpD,CAAC;AAAA,EACH;AACF,CAAC;",
   "names": []
 }

@@ -1,5 +1,10 @@
 // app/javascript/modules/form_controller.js
+console.log("Script loaded");
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOMContentLoaded");
+});
 document.addEventListener("turbo:load", function() {
+  console.log("Script loaded");
   const fileInput = document.getElementById("post_post_images");
   const fileList = document.getElementById("file-list");
   fileInput.addEventListener("change", function() {

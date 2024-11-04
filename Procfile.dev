@@ -1,1 +1,3 @@
-js: npx esbuild app/javascript/*.* app/javascript/modules/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --watch
+web: bin/rails server -p 3000
+js: yarn build --watch --external:@hotwired/turbo-rails
+browser-sync: npx browser-sync start --proxy "localhost:3000" --files "app/assets/builds/*.js, app/views/**/*.html.erb"

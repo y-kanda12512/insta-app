@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   const profileImage = document.getElementById("profileImage");
 
   if (profileImage) {
