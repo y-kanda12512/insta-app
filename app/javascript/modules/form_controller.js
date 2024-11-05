@@ -1,9 +1,4 @@
-console.log("Script loaded");
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOMContentLoaded");
-});
-
-document.addEventListener("turbo:load", function () {
   console.log("Script loaded");
   // 選択されたファイルの名前を出力する
   const fileInput = document.getElementById("post_post_images");
