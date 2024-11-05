@@ -1,7 +1,7 @@
 .add-post.page-content
     .inner
         .add-post__head
-            = link_to 'Cancel', posts_path,class:'add-post__head-link'
+            = link_to 'Cancel', posts_path,class:'add-post__head-link',data: { turbo: false }
             .add-post__title Status
             %span#js-post-link.add-post__head-link.post-link-inactive Post
         .add-post__content
