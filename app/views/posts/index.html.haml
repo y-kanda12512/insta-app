@@ -5,7 +5,7 @@
                 = image_tag 'photo-camera.png', alt:'カメラの画像'
         .posts__body
             - @posts.each do |post|
-                .post#post-show{ data: { post_id: post.id } }
+                .post.post-show{ data: { post_id: post.id } }
                     = link_to post_path(post) do
                         .post__head
                             .post__profile-image
@@ -23,10 +23,10 @@
                                     = image_tag url_for(post_image), alt: "投稿画像", class:'post__image'
                         .post__content
                             .post__tabs
-                                .post__heart.post__tab.hidden.active-heart
+                                .post__heart.post__tab.hidden.active-heart{ data: { post_id: post.id } }
                                     = link_to post_like_path(post), data: { method: :delete } do
                                         = image_tag 'active-heart.png'
-                                .post__heart.post__tab.hidden.inactive-heart
+                                .post__heart.post__tab.hidden.inactive-heart{ data: { post_id: post.id } }
                                     = link_to post_like_path(post), data: { method: :post } do
                                         = image_tag 'inactive-heart.png'
                                 = link_to '#',class:'post__tab' do

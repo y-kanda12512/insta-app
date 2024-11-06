@@ -1,27 +1,29 @@
-// // import axios from "axios";
-// // import $ from "jquery";
-// // import { csrfToken } from "rails-ujs";
+import axios from "axios";
+import $ from "jquery";
 
-// // axiosにCSRFトークンを設定
-// // axios.defaults.headers.common["X-CSRF-Token"] = csrfToken();
+// CSRFトークンを追加
+document.addEventListener("DOMContentLoaded", () => {
+  const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
+  axios.defaults.headers.common["X-CSRF-Token"] = token;
+});
 
-// const handleHeartDisplay = (hasLiked) => {
-//   if (hasLiked) {
-//     $(".active-heart").removeClass("hidden");
-//     console.log("hasLiked is true");
-//   } else {
-//     $(".inactive-heart").removeClass("hidden");
-//     console.log("hasLiked is false");
-//   }
-// };
+const handleHeartDisplay = (postId, hasLiked) => {
+  if (hasLiked) {
+    $(`.active-heart[data-post-id="${postId}"]`).removeClass("hidden");
+    $(`.inactive-heart[data-post-id="${postId}"]`).addClass("hidden");
+  } else {
+    $(`.inactive-heart[data-post-id="${postId}"]`).removeClass("hidden");
+    $(`.active-heart[data-post-id="${postId}"]`).addClass("hidden");
+  }
+};
 
-// document.addEventListener("turbolinks:load", () => {
-//   const dataset = $("#post-show").data();
-//   const postId = dataset.postId;
+document.addEventListener("turbo:load", () => {
+  $(".post-show").each(function () {
+    const postId = $(this).data("postId");
 
-//   //   ここでlikesコントローラーのshowメソッドが発動する
-//   axios.get(`/posts/${postId}/like`).then((response) => {
-//     const hasLiked = response.data.hasLiked;
-//     handleHeartDisplay(hasLiked);
-//   });
-// });
+    axios.get(`/posts/${postId}/like`).then((response) => {
+      const hasLiked = response.data.hasLiked;
+      handleHeartDisplay(postId, hasLiked);
+    });
+  });
+});
